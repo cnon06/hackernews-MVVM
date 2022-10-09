@@ -4,7 +4,7 @@ class Comment {
   
   
   final String text;
-  final String id;
+  final dynamic id;
 
 
   Comment({required this.text, required this.id, });

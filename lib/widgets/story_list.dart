@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hackernews/viewmodels/storyviewmodel.dart';
+import 'package:provider/provider.dart';
+
+import '../commentlistpage.dart';
+import '../viewmodels/commentlistviewmodel.dart';
 
 class StoryList extends StatelessWidget {
   final List<StoryViewModel> stories;
@@ -15,7 +19,23 @@ class StoryList extends StatelessWidget {
             onTap: () {
               stories[index].title;
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Text(stories[index].title)));
+                  MaterialPageRoute(builder: (context) => 
+
+        ChangeNotifierProvider.value(
+          value: CommentListViewModel(),
+          child: CommentListPage(story: stories[index]),
+        )
+
+                  
+        //            ChangeNotifierProvider(
+        //   create: (context) => CommentListViewModel(),
+        //   child: CommentListPage(story: stories[index]),
+        // )
+        ),
+                  
+                 // CommentListPage()
+                  
+                  );
             },
             title: Text(
               stories[index].title,
